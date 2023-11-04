@@ -1,20 +1,26 @@
-// Функция для проверки длины строки
+// Переменная для теста функции
+const example = 'afafaffaf';
 
-
-function strLength(str, characters) {
-  return str.length <= characters;
+// функция для проверки длины строки
+function stringLength(str, symbols) {
+  return str.length <= symbols;
 }
-strLength();
 
-// Функция для проверки длины строки
+stringLength(example, 30);
 
-function isPalindrome(str) {
+// проверка на полиндром
+const exemple = 'То  п??от';
+
+function checkPalindrome(str) {
   str = str.toString();
 
   str = str.toLowerCase().replace(/\s|[,.!?"'/-]/g, '');
   return str === str.split('').reverse().join('');
 }
-isPalindrome();
+
+checkPalindrome(exemple);
+
+// 5.16
 
 const timeToString = (timeString) => {
   const [hours, minutes] = timeString.split(':');
@@ -28,5 +34,5 @@ const isWorkingTime = (startWork, endWork, startMeeting, longMeeting) => {
   return startMeeting >= startWork && startMeeting + longMeeting <= endWork;
 };
 
-isWorkingTime('08:00', '18:00', '10:00', 120);
-isWorkingTime('08:00', '17:00', '16:30', 90);
+isWorkingTime('09:00', '18:00', '10:00', 120);
+isWorkingTime('09:00', '17:00', '16:00', 90);
