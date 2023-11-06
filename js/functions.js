@@ -1,14 +1,9 @@
-// Переменная для теста функции
-const example = 'afafaffaf';
-
-// функция для проверки длины строки
 function stringLength(str, symbols) {
   return str.length <= symbols;
 }
 
-stringLength(example, 30);
+stringLength();
 
-// проверка на полиндром
 const exemple = 'То  п??от';
 
 function checkPalindrome(str) {
@@ -19,8 +14,6 @@ function checkPalindrome(str) {
 }
 
 checkPalindrome(exemple);
-
-// 5.16
 
 const timeToString = (timeString) => {
   const [hours, minutes] = timeString.split(':');
