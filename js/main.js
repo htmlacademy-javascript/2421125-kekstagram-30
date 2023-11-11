@@ -1,7 +1,6 @@
-import './utils';
-import './data';
-import { createElement } from './data';
+import './util';
+import { getPictures } from './data';
+import { renderThumbmails } from './thumbnail.js';
 
-const CREATE_ELEMENT_LENGTH = 25;
-
-Array.from({ length: CREATE_ELEMENT_LENGTH }, createElement);
+const pictures = getPictures();
+renderThumbmails(pictures);
