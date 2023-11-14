@@ -5,7 +5,6 @@ const getRandomInteger = (a, b) => {
   return Math.floor(result);
 };
 
-
 function generateId() {
   let id = 0;
   return function () {
@@ -16,4 +15,6 @@ function generateId() {
 const getRandomArrayElement = (elements) =>
   elements[getRandomInteger(0, elements.length - 1)];
 
-export { getRandomInteger, generateId, getRandomArrayElement };
+const isEscapeKey = (evt) => evt.key === 'Escape';
+
+export { getRandomInteger, generateId, getRandomArrayElement, isEscapeKey };
