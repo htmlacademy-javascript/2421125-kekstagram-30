@@ -12,7 +12,12 @@ const commentsCountTotalElement = document.querySelector(
   '.social__comment-total-count'
 );
 const socialCommentsElement = document.querySelector('.social__comments');
+const commentsShownElement = commentCountElement.querySelector(
+  '.social__comment-shown-count'
+);
 const commentsLoaderElement = document.querySelector('.comments-loader');
+
+const COMMENT_COUNTER = 5;
 
 const createCommentElement = (comment) => {
   const commentElement = document.createElement('li');
@@ -35,15 +40,51 @@ const createCommentElement = (comment) => {
   socialCommentsElement.appendChild(commentElement);
 };
 
+const updateCommentsShownCount = (count) => {
+  commentsShownElement.textContent = count;
+};
+
+const loadComments = (comments) => {
+  let maxComments =
+    comments.length >= COMMENT_COUNTER ? COMMENT_COUNTER : comments.length;
+
+  const loadMoreComments = () => {
+    socialCommentsElement.innerHTML = '';
+    const pictureComments = comments.slice(0, maxComments);
+    pictureComments.forEach((comment) => {
+      createCommentElement(comment);
+    });
+
+    updateCommentsShownCount(maxComments);
+
+    if (comments.length <= maxComments) {
+      commentsLoaderElement.classList.add('hidden');
+    } else {
+      commentsLoaderElement.classList.remove('hidden');
+    }
+  };
+
+  commentsLoaderElement.addEventListener('click', () => {
+    if (maxComments + COMMENT_COUNTER <= comments.length) {
+      maxComments += COMMENT_COUNTER;
+      loadMoreComments();
+    } else {
+      maxComments = comments.length;
+      loadMoreComments();
+    }
+  });
+
+  loadMoreComments();
+};
+
+
 const renderPictureInfo = (index, pictures) => {
   pictureImgElement.src = pictures[index].url;
   pictureLikesCountElement.textContent = pictures[index].likes;
   pictureDescriptionElement.textContent = pictures[index].description;
   commentsCountTotalElement.textContent = pictures[index].comments.length;
 
-  pictures[index].comments.forEach((comment) => {
-    createCommentElement(comment);
-  });
+  loadComments(pictures[index].comments);
 };
 
 const openBigPicture = (index, pictures) => {
@@ -51,8 +92,6 @@ const openBigPicture = (index, pictures) => {
   bigPictureElement.classList.remove('hidden');
   document.addEventListener('keydown', onDocumentKeydown);
   bodyElement.classList.add('modal-open');
-  commentCountElement.classList.add('hidden');
-  commentsLoaderElement.classList.add('hidden');
   renderPictureInfo(index, pictures);
 };
 
