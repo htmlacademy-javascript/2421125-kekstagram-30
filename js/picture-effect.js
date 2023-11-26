@@ -14,74 +14,74 @@ const imagePreviewElement = pictureFormElement.querySelector(
 );
 const originalEffectElement = pictureFormElement.querySelector('#effect-none');
 
-const effectType = {
-  original: 'none',
-  chrome: 'chrome',
-  sepia: 'sepia',
-  marvin: 'marvin',
-  phobos: 'phobos',
-  heat: 'heat',
+const EffectType = {
+  ORIGINAL: 'none',
+  CHROME: 'chrome',
+  SEPIA: 'sepia',
+  MARVIN: 'marvin',
+  PHOBOS: 'phobos',
+  HEAT: 'heat',
 };
 
-const filterStyle = {
-  [effectType.chrome]: {
+const FilterStyle = {
+  [EffectType.CHROME]: {
     style: 'grayscale',
     unit: '',
   },
-  [effectType.sepia]: {
+  [EffectType.SEPIA]: {
     style: 'sepia',
     unit: '',
   },
-  [effectType.marvin]: {
+  [EffectType.marvin]: {
     style: 'invert',
     unit: '%',
   },
-  [effectType.phobos]: {
+  [EffectType.PHOBOS]: {
     style: 'blur',
     unit: 'px',
   },
-  [effectType.heat]: {
+  [EffectType.heat]: {
     style: 'brightness',
     unit: '',
   },
 };
 
 const sliderOptions = {
-  [effectType.original]: {
+  [EffectType.ORIGINAL]: {
     min: 0,
     max: 100,
     step: 1,
   },
-  [effectType.chrome]: {
+  [EffectType.CHROME]: {
     min: 0,
     max: 1,
     step: 0.1,
   },
-  [effectType.sepia]: {
+  [EffectType.SEPIA]: {
     min: 0,
     max: 1,
     step: 0.1,
   },
-  [effectType.marvin]: {
+  [EffectType.MARVIN]: {
     min: 0,
     max: 100,
     step: 1,
   },
-  [effectType.phobos]: {
+  [EffectType.PHOBOS]: {
     min: 0,
     max: 3,
     step: 0.1,
   },
-  [effectType.heat]: {
+  [EffectType.HEAT]: {
     min: 1,
     max: 3,
     step: 0.1,
   },
 };
 
-let currentEffect = effectType.original;
+let currentEffect = EffectType.ORIGINAL;
 
-const isOriginal = () => currentEffect === effectType.original;
+const isOriginal = () => currentEffect === EffectType.ORIGINAL;
 
 const setFilterStyle = () => {
   if (isOriginal()) {
@@ -91,7 +91,7 @@ const setFilterStyle = () => {
   }
 
   const effectValue = effectValueElement.value;
-  const { style, unit } = filterStyle[currentEffect];
+  const { style, unit } = FilterStyle[currentEffect];
   imagePreviewElement.style.filter = `${style}(${effectValue}${unit})`;
 };
 
@@ -144,12 +144,13 @@ const setEffect = (effect) => {
   setFilterStyle();
 };
 
-const resetEffect = () => setEffect(effectType.original);
+const resetEffect = () => setEffect(EffectType.ORIGINAL);
 
 const onEffectsChange = (evt) => setEffect(evt.target.value);
 
+createSlider(sliderOptions[currentEffect]);
+
 const initEffectListener = () => {
-  createSlider(sliderOptions[currentEffect]);
   effectsElement.addEventListener('change', onEffectsChange);
 };
 
