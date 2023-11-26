@@ -1,5 +1,8 @@
 import { isEscapeKey } from './util.js';
 
+const REMOVE_MESSAGE_TIMEOUT = 5000;
+
+
 const bodyElement = document.querySelector('body');
 const errorLoadPicturesElement = document
   .querySelector('#data-error')
@@ -10,8 +13,6 @@ const successMessageElement = document
 const errorMessageElement = document
   .querySelector('#error')
   .content.querySelector('.error');
-
-const REMOVE_MESSAGE_TIMEOUT = 5000;
 
 const showLoadErrorMessage = () => {
   const errorTextElement = errorLoadPicturesElement.cloneNode(true);
