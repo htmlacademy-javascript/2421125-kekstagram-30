@@ -7,11 +7,11 @@ import { initFilters } from './filters.js';
 
 const bootstrap = async () => {
   try {
+    initPictureFormListener();
     const pictures = await loadPictures();
     renderThumbmails(pictures);
-    initFilters(pictures);
     initPictureListeners(pictures);
-    initPictureFormListener();
+    initFilters(pictures);
   } catch {
     showLoadErrorMessage();
   }

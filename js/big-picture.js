@@ -31,8 +31,6 @@ const createCommentElement = ({ avatar, name, message }) => {
   avatarImgElement.alt = name;
   avatarImgElement.width = 35;
   avatarImgElement.height = 35;
-  avatarImgElement.src = avatar;
-  avatarImgElement.alt = name;
   avatarImgElement.width = AVATAR_IMG_WIDTH;
   avatarImgElement.height = AVATAR_IMG_HEIGHT;
 
