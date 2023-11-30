@@ -1,6 +1,5 @@
 import { debounce } from './util.js';
 import { renderThumbmails } from './thumbnail.js';
-import { initPictureListeners } from './big-picture.js';
 
 const FilterType = {
   DEFAULT: 'default',
@@ -43,7 +42,6 @@ const setFilter = (evt, filter, pictures) => {
   const picturesElement = document.querySelectorAll('.picture');
   picturesElement.forEach((picture) => picture.remove());
   renderThumbmails(filteredPictures);
-  initPictureListeners(filteredPictures);
 };
 
 const debouncedSetFilters = debounce(setFilter);
