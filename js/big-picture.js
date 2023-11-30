@@ -29,8 +29,6 @@ const createCommentElement = ({ avatar, name, message }) => {
   avatarImgElement.classList.add('social__picture');
   avatarImgElement.src = avatar;
   avatarImgElement.alt = name;
-  avatarImgElement.width = 35;
-  avatarImgElement.height = 35;
   avatarImgElement.width = AVATAR_IMG_WIDTH;
   avatarImgElement.height = AVATAR_IMG_HEIGHT;
 
