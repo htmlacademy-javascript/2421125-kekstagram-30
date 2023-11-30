@@ -16,7 +16,7 @@ const FilterStyle = {
     style: 'sepia',
     unit: '',
   },
-  [EffectType.marvin]: {
+  [EffectType.MARVIN]: {
     style: 'invert',
     unit: '%',
   },
@@ -24,7 +24,7 @@ const FilterStyle = {
     style: 'blur',
     unit: 'px',
   },
-  [EffectType.heat]: {
+  [EffectType.HEAT]: {
     style: 'brightness',
     unit: '',
   },
