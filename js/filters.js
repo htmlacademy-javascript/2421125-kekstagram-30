@@ -1,4 +1,5 @@
 import { debounce } from './util.js';
+
 import { renderThumbmails } from './thumbnail.js';
 
 const FilterType = {
